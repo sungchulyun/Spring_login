@@ -5,6 +5,7 @@ import com.example.friendship.entity.User;
 import com.example.friendship.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +25,7 @@ public class UserController {
 
     // 회원가입
     @PostMapping("/join")
-    public Long join(@RequestBody Map<String, String> user) {
+    public Long join(@RequestBody Map<String, String>user) {
         return userRepository.save(User.builder()
                 .email(user.get("email"))
                 .password(passwordEncoder.encode(user.get("password")))
@@ -49,4 +50,12 @@ public class UserController {
         result.put("result", "user ok");
         return result;
     }
+
+    @GetMapping("/")
+    public String mainHome(){
+
+        return "/index";
+    }
+
+
 }
