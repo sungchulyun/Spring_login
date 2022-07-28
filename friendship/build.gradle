@@ -25,14 +25,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'com.squareup.okhttp3:okhttp:3.14.6'
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test' {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
 	testImplementation 'org.springframework.security:spring-security-test'
 }
 

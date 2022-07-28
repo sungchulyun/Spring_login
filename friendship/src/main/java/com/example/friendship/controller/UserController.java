@@ -1,9 +1,11 @@
-package com.example.friendship;
+package com.example.friendship.controller;
 
 import com.example.friendship.config.security.JwtTokenProvider;
 import com.example.friendship.entity.User;
 import com.example.friendship.repository.UserRepository;
+import com.example.friendship.route;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +16,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+@Slf4j
 @RequiredArgsConstructor
 @RestController
 public class UserController {
@@ -25,7 +28,7 @@ public class UserController {
 
     // 회원가입
     @PostMapping("/join")
-    public Long join(@RequestBody Map<String, String>user) {
+    public Long join(@RequestBody Map<String, String>    user) {
         return userRepository.save(User.builder()
                 .email(user.get("email"))
                 .password(passwordEncoder.encode(user.get("password")))
@@ -51,11 +54,9 @@ public class UserController {
         return result;
     }
 
-    @GetMapping("/")
-    public String mainHome(){
-
-        return "/index";
+    @GetMapping("/hello")
+    public boolean route(){
+        route route = new route();
+        return route.myMethod();
     }
-
-
 }
